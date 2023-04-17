@@ -9,3 +9,4 @@
 | code challange 3 | [Link](./cc3/README.md) |
 | code challange 4 | [Link](./cc4/README.md) |
 | code challange 5 | [Link](./cc5/README.md) |
+| code challange 6 | [Link](./cc5/README_CC6.md) |
