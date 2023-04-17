@@ -1,61 +1,60 @@
-class Node:
-    def __init__(self,value):
-        self.value = value
-        self.next = None
+# LAB - Class 06
 
-class LinkedList:
-    def __init__(self):
-        self.head = None
+## Project: Linked List
 
-    def insert(self,value):
+### Author: Abdullah Shaghnoba
+---
+---
+### How to run the application?
+#### python  cc5/linked_list/main.py
+---
+### How to use your pytest library?
+#### pip install -r requirements.txt
+---
+### How to run the tests application? 
+####  **pytest**
 
-        node = Node(value)
-        
-        node.next =self.head
-        self.head = node
-        
 
-    def __str__(self):
+# Code Challenge: Class 06
+## Append: 
+### adds a node to the end of the linked list after iterating through it 
+### Arguments: value
+### Returns: nothing
 
-        printed_value = ""
-        
-        if self.head is None:
-            printed_value = "Empty LinkeList"
-        else:
-            current = self.head
-            while(current):
-                printed_value += f'{current.value} -> '
-                current = current.next
-            
-            printed_value += " Null"
-        return printed_value
-    
-    def __repr__(self):
 
-        printed_value = ""
-        
-        if self.head is None:
-            printed_value = "Empty LinkeList"
-        else:
-            current = self.head
-            while(current):
-                printed_value += f'{current.value} -> '
-                current = current.next
-            
-            printed_value += " Null"
-        return printed_value
-    
+## Insert Before:
+### adds a node before a specific node by iterating until we find it then make the node point at it and then make the prev node point at our node
+### Arguments: value, new_value
+### Returns: nothing
+
+
+## Insert After:
+### adds a node after a specific node by iterating until we find it then make the node point at it then make the current point at our node
+### Arguments: value, new_value
+### Returns: nothing
+
+
+
+## Delete:
+### deletes a node by searching for it's value the below function covers the cases 1)where the linked list is empty and 2) if the target
+### value is the head and 3) if the target value dose not exist in the linked list the rest of the cases are included in a while loop 
+### where the loop search for the value until we find it then unlink it from the link by makeing the previous node point at the next node
+### Arguments: key
+### Returns: True or False if the delete is done properly or not
+---
+## Whiteboard Process
+[Whiteboard Process](./pics/cc06.jpg)
+
+## Approach & Efficiency
+for the Append method : adds a node to the end of the linked list after iterating through it.
+for the Insert Before method: adds a node before a specific node by iterating until we find it then make the node point at it and then make the prev node point at our node.
+for the to Insert After method: adds a node after a specific node by iterating until we find it then make the node point at it then make the current point at our node.
+for the to Delete method: deletes a node by searching for it's value the below function covers the cases 1)where the linked list is empty and 2) if the target value is the head and 3) if the target value dose not exist in the linked list the rest of the cases are included in a while loop where the loop search for the value until we find it then unlink it from the link by makeing the previous node point at the next node.
+Time -->O(n),for all methods. 
  
-    def includes(self,key):
+space -->O(1), since it only uses a constant amount of additional memory to keep track of the left and right indices, for all methods 
 
-        temp = self.head
-        # search for the key 
-        while(temp):
-            if temp.value == key:
-                return True
-            else:
-               temp = temp.next
-        return False
+## Solution:
     """
     adds a node to the end of the linked list after iterating through it 
     """
@@ -137,6 +136,3 @@ class LinkedList:
         prev.next = temp.next
         temp = None
         return True
-            
-                
-       
