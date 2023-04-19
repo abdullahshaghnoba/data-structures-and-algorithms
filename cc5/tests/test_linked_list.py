@@ -136,6 +136,61 @@ def test_10():
     excepted=False
     actual=ll.delete_node("e")
     assert actual == excepted
+########################################## kthFromEnd tests #####################################################
+"""
+Where k is greater than the length of the linked list
+"""
+
+def test_11():
+    ll=LinkedList()
+    ll.append("a")
+    ll.append("b")
+    ll.append("c")  
+    excepted="you are looking for a node that doesn't exist ;)"
+    actual=ll.kthFromEnd(4)
+    assert actual == excepted 
+"""
+Where k and the length of the list are the same
+"""
+def test_12():
+    ll=LinkedList()
+    ll.append("a")
+    ll.append("b")
+    ll.append("c")  
+    excepted="you missed the head by 1 lol"
+    actual=ll.kthFromEnd(3)
+    assert actual == excepted
+"""
+Where k is not a positive integer
+"""
+def test_13():
+    ll=LinkedList()
+    ll.append("a")
+    ll.append("b")
+    ll.append("c")  
+    excepted="out of bounds"
+    actual=ll.kthFromEnd(-1)
+    assert actual == excepted 
+"""
+Where the linked list is of a size 1
+"""
+def test_14():
+    ll=LinkedList()
+    ll.append("a")  
+    excepted="a"
+    actual=ll.kthFromEnd(0)
+    assert actual == excepted 
+"""
+“Happy Path” where k is not at the end, but somewhere in the middle of the linked list
+"""
+def test_15():
+    ll=LinkedList()
+    ll.append("a")
+    ll.append("b")
+    ll.append("c")  
+    excepted="b"
+    actual=ll.kthFromEnd(1)
+    assert actual == excepted               
 ##########################################       fixtures     ###################################################
 @pytest.fixture
 def ll():
