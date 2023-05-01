@@ -11,3 +11,4 @@
 | code challange 5 | [Link](./cc5/README.md) |
 | code challange 6 | [Link](./cc5/README_CC6.md) |
 | code challange 7 | [Link](./cc5/README_CC7.md) |
+| code challange 8 | [Link](./cc5/README_CC8.md) |
