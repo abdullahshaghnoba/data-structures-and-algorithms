@@ -207,3 +207,27 @@ class LinkedList:
 
 
         return list1  
+    
+    """
+    revrese linked list
+    """
+def reverse(l):
+    if l.head==None:
+        return "you can't reverse empty linked list !!"
+    prev=None
+    current=l.head
+    while current:
+        next_node=current.next
+        current.next=prev
+        prev=current
+        current=next_node
+    l.head=prev
+    return l
+def is_pilandrom(l):
+    prev=str(l)
+    reverse(l)
+    after=str(l)
+    if prev==after:
+        return True
+    else:
+        return False 

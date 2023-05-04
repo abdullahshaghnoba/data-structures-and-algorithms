@@ -1,5 +1,5 @@
 import pytest
-from linked_list.linked_list import LinkedList
+from cc5.linked_list.linked_list import LinkedList
 
 
 def test_instantiate_an_empty_linked_list():
