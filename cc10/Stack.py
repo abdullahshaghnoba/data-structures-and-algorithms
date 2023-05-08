@@ -1,4 +1,4 @@
-from Node import Node
+from cc10.Node import Node
 
 class Stack:
     def __init__(self):
@@ -69,3 +69,9 @@ class Stack:
     """   
     def is_empty_stack(self):
         return True if self.size == 0 else False
+    """
+    Returns the size of the stack
+    Arguments: none
+    """
+    def get_stack_size(self):
+        return self.size

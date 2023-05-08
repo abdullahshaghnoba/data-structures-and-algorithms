@@ -1,6 +1,6 @@
 import pytest
-from Queue import Queue
-from Stack import Stack
+from cc10.Queue import Queue
+from cc10.Stack import Stack
 def test_queue1():
     with pytest.raises(Exception):
         queue = Queue()
