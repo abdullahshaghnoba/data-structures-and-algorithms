@@ -15,7 +15,7 @@ def test_animal0():
     animal_queue.enqueue(animal0)
     animal_queue.enqueue(animal1)
     actual = animal_queue.str()
-    expected = ([{'name': 'yummi', 'species': 'cat'}, {'name': 'rengar', 'species': 'cat'}])
+    expected = ("Front --> {'species': 'cat', 'name': 'yummi'}  {'species': 'cat', 'name': 'rengar'} ")
     assert actual == expected
 
 def test_animal1():
@@ -105,7 +105,7 @@ def test_animal4():
     animal_queue.dequeue("dog")
     
     actual = animal_queue.str()
-    expected = ([{'name': 'warwick', 'species': 'dog'}], [{'name': 'rengar', 'species': 'cat'}])
+    expected = ("Front --> {'species': 'dog', 'name': 'warwick'} ", "Front --> {'species': 'cat', 'name': 'rengar'} ")
     assert actual == expected
 
 

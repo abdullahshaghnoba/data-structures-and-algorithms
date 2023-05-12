@@ -6,14 +6,14 @@
 ##  Returns : nothing
 ---
 ## dequeue method:
-## Removes a value based on the given pref from the front of the queue
+##  Removes a value based on the given pref from the front of the queue with an O(1) Time performance
 ##  Arguments: pref
 ##  Returns: the removed value from the front of the queue
 
 ---
 
 ## Whiteboard Process
-[Whiteboard Process](./pic/code%20challenge%2012.jpg)
+[Whiteboard Process](./pic/code%20challenge%2012%20(1).jpg)
 
 ---
 
@@ -24,7 +24,7 @@
 ##  Returns : nothing
 
 ## dequeue method:
-## Removes a value based on the given pref from the front of the queue
+##  Removes a value based on the given pref from the front of the queue with an O(1) Time performance
 ##  Arguments: pref
 ##  Returns: the removed value from the front of the queue
 
@@ -36,23 +36,23 @@
  class AnimalShelter:
 
     """
-    creates empty lists one for cats and one for dogs 
+    creates empty queues one for cats and one for dogs 
     """
     def __init__(self):
-        self.queue_cats =[]
-        self.queue_dogs =[]
+        self.queue_cats =Queue()
+        self.queue_dogs =Queue()
     """
     prints string that represents the queue
     """
     def str(self):
-        if len(self.queue_cats)!=0 and len(self.queue_dogs)==0:
-            return self.queue_cats  
-        elif len(self.queue_cats)==0 and len(self.queue_dogs)!=0 :
-            return self.queue_dogs
-        elif len(self.queue_cats)==0 and len(self.queue_dogs)==0 :
+        if self.queue_cats.front is not None and self.queue_dogs.front is None:
+            return self.queue_cats.__str__()  
+        elif self.queue_cats.front is None and self.queue_dogs.front is not None:
+            return self.queue_dogs.__str__() 
+        elif self.queue_cats.front is None and self.queue_dogs.front is None:
             return "empty queue"
         else :
-            return (self.queue_dogs  , self.queue_cats )
+            return (self.queue_dogs.__str__()   , self.queue_cats.__str__()  )
  
     
     """
@@ -63,23 +63,26 @@
     def enqueue(self,animal):
 
         if animal["species"]=="cat":
-            self.queue_cats.append(animal)
+            self.queue_cats.enqueue_queue(animal)
         if animal["species"] == "dog":
-            self.queue_dogs.append(animal)    
+            self.queue_dogs.enqueue_queue(animal)    
 
     """
-    Removes a value based on the given pref from the front of the queue
+    Removes a value based on the given pref from the front of the queue with an O(1) Time performance
     Arguments: pref
     Returns: the removed value from the front of the queue
     """
     def dequeue(self,pref):
-        if len(self.queue_cats)==0:
-            if len(self.queue_dogs)==0:
-                return "you can't dequeue from empty queue"
-            return "you can't dequeue from empty queue"        
-        if pref=="cat":
-            return self.queue_cats.pop(0)
-        elif pref=="dog":
-            return self.queue_dogs.pop(0)
+  
+        if self.queue_cats.front==None and self.queue_dogs.front==None :
+            return "you can't dequeue from empty queue"     
+        if pref=="cat" and self.queue_cats.front is not None:
+            return self.queue_cats.dequeue_queue()
+        elif pref=="cat" and self.queue_cats.front is None:
+            return "you can't dequeue from empty queue"
+        elif pref=="dog"and self.queue_dogs.front is not None:
+            return self.queue_dogs.dequeue_queue()
+        elif pref=="dog"and self.queue_dogs.front is None:
+            return "you can't dequeue from empty queue"
         else:
-            return "null"    
+            return "null"
