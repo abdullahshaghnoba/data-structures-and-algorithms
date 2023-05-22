@@ -45,4 +45,4 @@ def validate_brackets(string):
         validate_res = False        
     return validate_res     
             
-print(validate_brackets("}"))            
+print(validate_brackets("{(})"))            
