@@ -55,6 +55,9 @@
 ## Whiteboard Process **Contains method**
 [Whiteboard Process](./pics/Contains.jpg)
 
+## Whiteboard Process **find_maximum_value method**
+[Whiteboard Process](./pics/find_maximum_value.jpg)
+
 ---
 
 ## Approach & Efficiency
@@ -111,6 +114,18 @@
 ## O(log(n)) Time performance --> because we depend on the input size **we have to loop through the given Tree**. 
 ## O(1) Space performance --> the size of memory taken does not depend on the input size.
 
+## find_maximum_value method
+### Finds the maximum value in a tree 
+### Arguments: none
+### Returns:the result of max_recursion() helper function
+
+## max_recursion method
+### helper function for the find_maximum_value method
+### Arguments: root
+### Returns: self.max
+
+## O(n) Time performance --> because we depend on the input size we have to loop through the given Tree.
+## O(1) Space performance --> the size of memory taken does not depend on the input size.
 ---
 
 ## Solution:
@@ -159,6 +174,25 @@ class Binary_Tree:
               returned_list.append(root.value)
         return returned_list
 
+    def find_maximum_value(self):
+        if self.root == None:
+            return "no max value for empty trees" 
+         
+        else:
+            # print(self.root.value)
+            return self.max_recursion(self.root)
+        
+                  
+    def max_recursion(self,root):
+        if root is not None:    
+            if self.max == None:
+                self.max=root.value
+            if root.value > self.max:
+                self.max=root.value
+                # print(max)           
+            self.max_recursion(root.left)
+            self.max_recursion(root.right)
+        return self.max
 
 ###############################################################
 class Binary_Search_Tree(Binary_Tree):

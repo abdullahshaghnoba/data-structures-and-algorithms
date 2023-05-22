@@ -14,7 +14,7 @@ class Node:
 class Binary_Tree:
     def __init__(self):
             self.root = None
-            
+            self.max = None
     """
     Sorts the tree on this order (the node then it's left node then it's right node) and keeps the sorted nodes in a list.
     Arguments: the root node in the tree.
@@ -59,29 +59,61 @@ class Binary_Tree:
     #          return []
     #     if root is not None:
     #       return  self.post_order(root.left)+self.post_order(root.right)+[root.value]
-              
-         
 
+    """
+    finds the maximum value in a tree 
+    Arguments: none
+    Returns:the result of max_recursion() helper function
+    """
+    def find_maximum_value(self):
+        if self.root == None:
+            return "no max value for empty trees" 
+         
+        else:
+            # print(self.root.value)
+            return self.max_recursion(self.root)
+        
+                
+    """
+    helper function for the find_maximum_value method
+    Arguments: root
+    Returns: self.max
+    """   
+    def max_recursion(self,root):
+        if root is not None:    
+            if self.max == None:
+                self.max=root.value
+            if root.value > self.max:
+                self.max=root.value
+                # print(max)           
+            self.max_recursion(root.left)
+            self.max_recursion(root.right)
+        return self.max
 
 
 if __name__=="__main__":
-    node1 = Node("2")
-    node1.left=Node("1")
-    node1.left.left=Node("0")
-    node1.right=Node("3")
-    node1.right.right = Node("4")
     tree= Binary_Tree()
-    # node12 = Node("A")
-    # node12.left = Node("BBB")
-    # node12.right = Node("CCCC")
-    # node12.left.left = Node("D")
-    # node12.left.right = Node("E")
-    # node12.right.left = Node("k")
-    # node12.right.right = Node("g")
-    # tree2= Binary_Tree()
+    node1 = Node(-5)
+    tree.root = node1
+    tree.root.left=Node(-7)
+    tree.root.left.left=Node(-10)
+    tree.root.left.right=Node(-6)
+    tree.root.right=Node(-3)
+    tree.root.right.right = Node(-2)
+    tree.root.right.left = Node(-4)
+    print(tree.find_maximum_value())
+    tree2= Binary_Tree()
+    node12 = Node(5)
+    tree2.root = node12
+    node12.left = Node(3)
+    node12.right = Node(7)
+    node12.left.left = Node(2)
+    node12.left.right = Node(4)
+    node12.right.left = Node(6)
+    node12.right.right = Node(8)
 
-    print(tree.post_order(node1))
-    # print(tree2.post_order(node12))
+    print(tree.in_order(node1))
+    print(tree2.in_order(node12))
 
 # ###############################################################
 class Binary_Search_Tree(Binary_Tree):
@@ -107,7 +139,7 @@ class Binary_Search_Tree(Binary_Tree):
             if value > node.value:
                 if node.right is None:
                     node.right = Node(value)
-                    print(node.right.value)   
+                    # print(node.right.value)   
                 else:
                     self.recursion(node.right,value)   
             else:
