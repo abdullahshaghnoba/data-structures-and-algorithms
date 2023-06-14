@@ -12,10 +12,7 @@
 ## arguments: list
 ## returns: sorted list
 
-## breadth_first method
-### Traverse a tree and returns a list withe nodes ordered by the breadth first rules
-### Arguments: tree
-### Return: list (nodes_in_order_bredth_first)
+
 
 ## Whiteboard Process 
 [Whiteboard Process](./pics/code%20challenge%2026.jpg)
