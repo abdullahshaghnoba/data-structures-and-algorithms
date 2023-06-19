@@ -1,4 +1,4 @@
-# Code Challenge 26
+# Code Challenge 27
 
 ---
 
@@ -27,7 +27,7 @@
 ### Merge Sort works by dividing the input array into two parts: a left part and a right part. Then do that recursively until we have lists of one element, Then we start the merge process by comparing the first element in each pair of lists and add the less element to the main list in the correct place and do that recursively until we have a sorted list.
 ---
 
-## O(n*log(n)) Time performance --> because we depend on the input size **we have to loop through the given input with a nested loop**. 
+## O(n*log(n)) Time performance --> because we depend on the input size **we have to loop through the given input with a recurssion on halfs of the input and a loop through the input**. 
 ## O(n) Space performance --> the size of memory taken depends on the input size.
 
 ## Solution:
