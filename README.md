@@ -18,4 +18,8 @@
 | code challange 13 | [Link](./cc13/README_13.md) |
 | code challange 15 | [Link](./cc15/ReadMe_15.md) |
 | code challange 17 | [Link](./cc17/README.md) |
+| code challange 26 | [Link](./cc26/README.md) |
+| code challange 27 | [Link](./cc27/README.md) |
+| code challange 28 | [Link](./cc28/README.md) |
+| code challange 30 | [Link](./cc30/README.md) |
 
