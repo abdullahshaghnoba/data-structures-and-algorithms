@@ -1,18 +1,19 @@
 from cc15.Node_Tree import Node , Binary_Tree
-
+from cc30.HASHTABEL import Hashtable
 def tree_intersection(BT1, BT2):
     """
     takes two binary trees and returns the intersection values between them.
     arguments: two binary trees
     returns: list of intersection values
     """
-    obj = {}
+    obj = Hashtable()
     data = Binary_Tree()
     first_tree = data.in_order(BT1)
+    # print(first_tree)
     for x in first_tree:
-        obj[x] = x
+        obj.set(x ,x)
     second_tree = data.in_order(BT2)
-    return [x for x in second_tree if x in obj]
+    return [x for x in second_tree if obj.has(x)]
 
 
 

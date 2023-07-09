@@ -24,4 +24,5 @@
 | code challange 30 | [Link](./cc30/README.md) |
 | code challange 31 | [Link](./cc31/README.md) |
 | code challange 32 | [Link](./cc32/README.md) |
+| code challange 33 | [Link](./cc33/README.md) |
 

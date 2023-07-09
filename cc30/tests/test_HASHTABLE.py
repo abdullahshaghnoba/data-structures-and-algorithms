@@ -1,15 +1,15 @@
 import pytest
 
-from cc30.HASHTABEL import HashTable
+from cc30.HASHTABEL import Hashtable
 
 def test_hashtable_testone():
-    hash_table = HashTable()
+    hash_table = Hashtable()
     expected = 3
-    actual = len(hash_table.map)
+    actual = len(hash_table.table)
     assert expected == actual
 
 def test_hashtable_add_new_item():
-    hash_table = HashTable()
+    hash_table = Hashtable()
     hash_table.set("A", 30)
     expected = ["A"]
     actual = hash_table.keys()
@@ -29,7 +29,7 @@ def test_hashtable_keys(test_HT):
 
 @pytest.fixture
 def test_HT():
-    hash_table = HashTable()
+    hash_table = Hashtable()
     hash_table.set("A", 28)
     hash_table.set("A", 30)
     hash_table.set("N", 24)
