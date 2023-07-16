@@ -34,8 +34,18 @@
 ### Returns the total number of vertices in the graph, 0 if there are none
 
 ---
-## Whiteboard Process 
+
+## breadth_first method:
+### Traverses the graph based on the breadth first algorithm starting from the given node
+### arguments: node
+### returns: the connected graph vertices to the given node
+
+---
+## Whiteboard Process for cc35
 [Whiteboard Process](./pics/cc35.jpg)
+
+## Whiteboard Process for cc36
+[Whiteboard Process](./pics/cc36.jpg)
 
 ---
 
@@ -61,7 +71,13 @@
 ## size method:
 ### O(n) Time performance --> because we depend on the input size in the loop we use.
 ### O(1) Space performance --> the size of memory taken does not depend on the input size.
+
+## breadth_first method:
+### O(n) Time performance --> because we depend on the input size in the loop we use.
+### O(n) Space performance --> the size of memory taken depends on the input size.
+
 ---
+
 
 ## Solution:
 
@@ -115,6 +131,21 @@ class Graph:
     
     def size(self):
         return len(self.adj_list.keys())
+
+    def breadth_first(self, node):
+        
+        all_vertices = []
+        visiting_queue = [node]
+        visited_vertices = {}
+        visited_vertices[node.value] = True  
+        while len(visiting_queue) > 0:
+            front = visiting_queue.pop(0)
+            all_vertices.append(front.value)
+            for x in self.adj_list[front]:
+                if x.vertex.value not in visited_vertices: 
+                    visited_vertices[x.vertex.value] = True
+                    visiting_queue.append(x.vertex)
+        return all_vertices
 
     def __str__(self):
         output = ''
