@@ -71,6 +71,26 @@ class Graph:
         Returns the total number of vertices in the graph, 0 if there are none
         """
         return len(self.adj_list.keys())
+    
+    def breadth_first(self, node):
+        """
+        Traverses the graph based on the breadth first algorithm starting from the given node
+        arguments: node
+        returns: the connected graph vertices to the given node
+        """
+        all_vertices = []
+        visiting_queue = [node]
+        visited_vertices = {}
+        visited_vertices[node.value] = True  
+        while len(visiting_queue) > 0:
+            front = visiting_queue.pop(0)
+            all_vertices.append(front.value)
+            for x in self.adj_list[front]:
+                if x.vertex.value not in visited_vertices: 
+                    visited_vertices[x.vertex.value] = True
+                    visiting_queue.append(x.vertex)
+        return all_vertices
+
 
     def __str__(self):
         output = ''
@@ -88,6 +108,7 @@ if __name__=='__main__':
     b = graph.add_vertex("B")
     c = graph.add_vertex("C")
     d = graph.add_vertex("D")
+    e = graph.add_vertex("E")
 
     graph.add_edge(a,b,2)
     graph.add_edge(a,c,3)
@@ -95,6 +116,7 @@ if __name__=='__main__':
     graph.add_edge(d,b,4)
     graph.add_edge(d,c,5)
     # print(graph.get_vertices())
-    print(graph.get_neighbors(d))
+    # print(graph.get_neighbors(d))
     # print(graph.size())
     # print(graph)
+    print(graph.breadth_first(a))
