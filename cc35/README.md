@@ -56,6 +56,7 @@
 
 ## Whiteboard Process for cc37
 [Whiteboard Process](./pics/cc37.jpg)
+
 ---
 
 ## Approach & Efficiency
