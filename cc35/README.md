@@ -96,6 +96,7 @@
 ## Solution:
 
 class Node:
+
     def __init__(self, value=None):
         self.value = value
     
@@ -103,11 +104,13 @@ class Node:
         return self.value
 
 class Edge:
+
     def __init__(self,vertex, weight=0):
         self.vertex = vertex
         self.weight = weight
 
 class Graph:
+
     def __init__(self):
         self.adj_list = {}
 
