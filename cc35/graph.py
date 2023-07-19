@@ -91,6 +91,29 @@ class Graph:
                     visiting_queue.append(x.vertex)
         return all_vertices
 
+    ################################################## Code Challenge 37 #################################
+    def  business_trip(self,list_of_cities):
+        """
+        takes a list of vertices and returns the weight from the first vertex to the last one if there is direct connection between each vertex and
+        the one after it.
+        Arguments: list of vertices.
+        Returns: the weight from the first vertex to the last vertex if there is direct connection between each vertex and the one after it else 
+        returns null.
+        """
+        total_cost = 0
+        
+        for idx, item in enumerate (list_of_cities): # O(n) time
+            neighbors = self.get_neighbors(item) # O(n) space and time
+            dict_of_neighbors = {} # O(n) space
+            if idx <len(list_of_cities)-1:
+                for x in neighbors: #  O(n) time
+                    dict_of_neighbors[x[0]] = x[1]  
+                if list_of_cities[idx+1].value in dict_of_neighbors:
+                    weight = dict_of_neighbors[list_of_cities[idx+1].value]
+                    total_cost += weight
+                else:
+                    return 'null'
+        return total_cost
 
     def __str__(self):
         output = ''
@@ -102,21 +125,41 @@ class Graph:
         return output
 
 if __name__=='__main__':
-    graph = Graph()
+    # graph = Graph()
 
-    a = graph.add_vertex("A")
-    b = graph.add_vertex("B")
-    c = graph.add_vertex("C")
-    d = graph.add_vertex("D")
-    e = graph.add_vertex("E")
+    # a = graph.add_vertex("A")
+    # b = graph.add_vertex("B")
+    # c = graph.add_vertex("C")
+    # d = graph.add_vertex("D")
+    # e = graph.add_vertex("E")
 
-    graph.add_edge(a,b,2)
-    graph.add_edge(a,c,3)
-    graph.add_edge(c,b,3)
-    graph.add_edge(d,b,4)
-    graph.add_edge(d,c,5)
+    # graph.add_edge(a,b,2)
+    # graph.add_edge(a,c,3)
+    # graph.add_edge(c,b,3)
+    # graph.add_edge(d,b,4)
+    # graph.add_edge(d,c,5)
     # print(graph.get_vertices())
     # print(graph.get_neighbors(d))
     # print(graph.size())
     # print(graph)
-    print(graph.breadth_first(a))
+    # print(graph.breadth_first(d))
+
+    graph = Graph()
+
+    a = graph.add_vertex("Pandora")
+    b = graph.add_vertex("Metroville")
+    c = graph.add_vertex("Arendelle")
+    d = graph.add_vertex("Narnia")
+    e = graph.add_vertex("Naboo")
+    f = graph.add_vertex("Monstropolis")
+
+    graph.add_edge(a,b,82)
+    graph.add_edge(a,c,150)
+    graph.add_edge(b,c,99)
+    graph.add_edge(b,d,37)
+    graph.add_edge(b,e,26)
+    graph.add_edge(b,f,105)
+    graph.add_edge(c,f,42)
+    graph.add_edge(f,e,73)
+    graph.add_edge(d,e,250)
+    print(graph.business_trip([b,a]))

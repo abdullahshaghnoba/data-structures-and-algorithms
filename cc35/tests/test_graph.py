@@ -127,3 +127,97 @@ def test_graph_eight():
     actual = graph.breadth_first(e)
     expected =['E']
     assert actual == expected
+
+############################################ Code challenge 37 tests #########################################
+def test_graph_nine():
+    graph = Graph()
+
+    a = graph.add_vertex("Pandora")
+    b = graph.add_vertex("Metroville")
+    c = graph.add_vertex("Arendelle")
+    d = graph.add_vertex("Narnia")
+    e = graph.add_vertex("Naboo")
+    f = graph.add_vertex("Monstropolis")
+
+    graph.add_edge(a,b,82)
+    graph.add_edge(a,c,150)
+    graph.add_edge(b,c,99)
+    graph.add_edge(b,d,37)
+    graph.add_edge(b,e,26)
+    graph.add_edge(b,f,105)
+    graph.add_edge(c,f,42)
+    graph.add_edge(f,e,73)
+    graph.add_edge(d,e,250)
+    actual = graph.business_trip([d,c,e])
+    expected ='null'
+    assert actual == expected
+
+
+def test_graph_ten():
+    graph = Graph()
+
+    a = graph.add_vertex("Pandora")
+    b = graph.add_vertex("Metroville")
+    c = graph.add_vertex("Arendelle")
+    d = graph.add_vertex("Narnia")
+    e = graph.add_vertex("Naboo")
+    f = graph.add_vertex("Monstropolis")
+
+    graph.add_edge(a,b,82)
+    graph.add_edge(a,c,150)
+    graph.add_edge(b,c,99)
+    graph.add_edge(b,d,37)
+    graph.add_edge(b,e,26)
+    graph.add_edge(b,f,105)
+    graph.add_edge(c,f,42)
+    graph.add_edge(f,e,73)
+    graph.add_edge(d,e,250)
+    actual = graph.business_trip([e,a])
+    expected ='null'
+    assert actual == expected
+
+def test_graph_eleven():
+    graph = Graph()
+
+    a = graph.add_vertex("Pandora")
+    b = graph.add_vertex("Metroville")
+    c = graph.add_vertex("Arendelle")
+    d = graph.add_vertex("Narnia")
+    e = graph.add_vertex("Naboo")
+    f = graph.add_vertex("Monstropolis")
+
+    graph.add_edge(a,b,82)
+    graph.add_edge(a,c,150)
+    graph.add_edge(b,c,99)
+    graph.add_edge(b,d,37)
+    graph.add_edge(b,e,26)
+    graph.add_edge(b,f,105)
+    graph.add_edge(c,f,42)
+    graph.add_edge(f,e,73)
+    graph.add_edge(d,e,250)
+    actual = graph.business_trip([c,f,e])
+    expected = 115
+    assert actual == expected
+
+def test_graph_twelve():
+    graph = Graph()
+
+    a = graph.add_vertex("Pandora")
+    b = graph.add_vertex("Metroville")
+    c = graph.add_vertex("Arendelle")
+    d = graph.add_vertex("Narnia")
+    e = graph.add_vertex("Naboo")
+    f = graph.add_vertex("Monstropolis")
+
+    graph.add_edge(a,b,82)
+    graph.add_edge(a,c,150)
+    graph.add_edge(b,c,99)
+    graph.add_edge(b,d,37)
+    graph.add_edge(b,e,26)
+    graph.add_edge(b,f,105)
+    graph.add_edge(c,f,42)
+    graph.add_edge(f,e,73)
+    graph.add_edge(d,e,250)
+    actual = graph.business_trip([b,a])
+    expected = 82
+    assert actual == expected
