@@ -1,3 +1,5 @@
+from cc10.Stack import Stack
+
 class Node:
     def __init__(self, value=None):
         self.value = value
@@ -21,7 +23,7 @@ class Graph:
         Returns: The added vertex
         """
         add_vertex = Node(value)
-        self.adj_list[add_vertex] = []
+        self.adj_list[add_vertex.value] = []
         return add_vertex
     
     def add_edge(self,node1, node2, weight=0):
@@ -30,17 +32,18 @@ class Graph:
         Arguments: 2 vertices to be connected by the edge, weight (optional)
         Returns: nothing
         """
-        if node1 not in self.adj_list:
+
+        if node1 is None  or node1.value not in self.adj_list :
             return("this node is not in the graph")
         
-        if node2 not in self.adj_list:
+        if node2 is None  or node2.value not in self.adj_list :
             return("this node is not in the graph")
         
         edge1 = Edge(node2, weight)
-        self.adj_list[node1].append(edge1)
+        self.adj_list[node1.value].append(edge1)
 
         edge2 = Edge(node1, weight)
-        self.adj_list[node2].append(edge2)
+        self.adj_list[node2.value].append(edge2)
 
     def get_vertices(self):
         """
@@ -48,10 +51,10 @@ class Graph:
         Returns all of the vertices in the graph as a list, Empty collection returned if there are no vertices
         """
         res = self.adj_list.keys()
-        vertices = []
-        for x in res:
-            vertices.append(x.value)
-        return vertices
+        # vertices = []
+        # for x in res:
+        #     vertices.append(x.value)
+        return list(res)
     
     def get_neighbors(self, vertex):
         """
@@ -59,7 +62,8 @@ class Graph:
         Returns a collection of edges connected to the given vertex, Includes the weight of the connection in the returned collection
         Empty collection returned if there are no vertices
         """
-        res = self.adj_list[vertex]
+        res = self.adj_list[vertex.value]
+        # print (self.adj_list)
         neighbors = []
         for x in res:
             neighbors.append((x.vertex.value,x.weight))
@@ -85,7 +89,7 @@ class Graph:
         while len(visiting_queue) > 0:
             front = visiting_queue.pop(0)
             all_vertices.append(front.value)
-            for x in self.adj_list[front]:
+            for x in self.adj_list[front.value]:
                 if x.vertex.value not in visited_vertices: 
                     visited_vertices[x.vertex.value] = True
                     visiting_queue.append(x.vertex)
@@ -114,6 +118,27 @@ class Graph:
                 else:
                     return 'null'
         return total_cost
+################################################# Code Challenge 38  Depth First Graph Traversal (Pre-Order) ##############################
+
+    def Depth_first(self, Node):
+        """
+        takes a node in a graph and returns a list of the graph nodes traversed following the depth first concept
+        Arguments: Node.
+        Returns: List of nodes.
+        """
+        stack = Stack()
+        visited = {}
+        res = []
+        stack.push_stack(Node.value)
+        visited[Node.value] = True
+        while not stack.is_empty_stack():
+            Top = stack.pop_stack()
+            res.append(Top)
+            for x in self.adj_list[Top]:
+                if x.vertex.value not in visited: 
+                    visited[x.vertex.value] = True
+                    stack.push_stack(x.vertex.value)
+        return res
 
     def __str__(self):
         output = ''
@@ -125,41 +150,41 @@ class Graph:
         return output
 
 if __name__=='__main__':
-    # graph = Graph()
+    graph = Graph()
 
-    # a = graph.add_vertex("A")
-    # b = graph.add_vertex("B")
-    # c = graph.add_vertex("C")
-    # d = graph.add_vertex("D")
-    # e = graph.add_vertex("E")
+    a = graph.add_vertex("A")
+    b = graph.add_vertex("B")
+    c = graph.add_vertex("C")
+    d = graph.add_vertex("D")
+    e = graph.add_vertex("E")
 
-    # graph.add_edge(a,b,2)
-    # graph.add_edge(a,c,3)
-    # graph.add_edge(c,b,3)
-    # graph.add_edge(d,b,4)
-    # graph.add_edge(d,c,5)
+    graph.add_edge(a,b,2)
+    graph.add_edge(a,c,3)
+    graph.add_edge(c,b,3)
+    graph.add_edge(d,b,4)
+    graph.add_edge(d,c,5)
     # print(graph.get_vertices())
     # print(graph.get_neighbors(d))
     # print(graph.size())
     # print(graph)
-    # print(graph.breadth_first(d))
+    print(graph.Depth_first(c))
 
-    graph = Graph()
+    # graph = Graph()
 
-    a = graph.add_vertex("Pandora")
-    b = graph.add_vertex("Metroville")
-    c = graph.add_vertex("Arendelle")
-    d = graph.add_vertex("Narnia")
-    e = graph.add_vertex("Naboo")
-    f = graph.add_vertex("Monstropolis")
+    # a = graph.add_vertex("Pandora")
+    # b = graph.add_vertex("Metroville")
+    # c = graph.add_vertex("Arendelle")
+    # d = graph.add_vertex("Narnia")
+    # e = graph.add_vertex("Naboo")
+    # f = graph.add_vertex("Monstropolis")
 
-    graph.add_edge(a,b,82)
-    graph.add_edge(a,c,150)
-    graph.add_edge(b,c,99)
-    graph.add_edge(b,d,37)
-    graph.add_edge(b,e,26)
-    graph.add_edge(b,f,105)
-    graph.add_edge(c,f,42)
-    graph.add_edge(f,e,73)
-    graph.add_edge(d,e,250)
-    print(graph.business_trip([b,a]))
+    # graph.add_edge(a,b,82)
+    # graph.add_edge(a,c,150)
+    # graph.add_edge(b,c,99)
+    # graph.add_edge(b,d,37)
+    # graph.add_edge(b,e,26)
+    # graph.add_edge(b,f,105)
+    # graph.add_edge(c,f,42)
+    # graph.add_edge(f,e,73)
+    # graph.add_edge(d,e,250)
+    # print(graph.business_trip([b,a]))

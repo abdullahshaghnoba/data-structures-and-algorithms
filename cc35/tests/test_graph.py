@@ -221,3 +221,61 @@ def test_graph_twelve():
     actual = graph.business_trip([b,a])
     expected = 82
     assert actual == expected
+
+################################################## Depth first tests #########################################################
+################################ testing Depth first on a graph where all vertices are connected
+def test_graph_13():
+    graph = Graph()
+
+    a = graph.add_vertex("A")
+    b = graph.add_vertex("B")
+    c = graph.add_vertex("C")
+    d = graph.add_vertex("D")
+
+    graph.add_edge(a,b,2)
+    graph.add_edge(a,c,3)
+    graph.add_edge(c,b,3)
+    graph.add_edge(d,b,4)
+    graph.add_edge(d,c,5)
+    actual = graph.Depth_first(a)
+    expected =['A', 'C', 'D', 'B']
+    assert actual == expected
+################################ testing Depth first on a graph where all vertices are not connected (there is an isolated vertex) starting
+################################ from a connected vertex
+def test_graph_14():
+    graph = Graph()
+
+    a = graph.add_vertex("A")
+    b = graph.add_vertex("B")
+    c = graph.add_vertex("C")
+    d = graph.add_vertex("D")
+    e = graph.add_vertex("E")
+
+
+    graph.add_edge(a,b,2)
+    graph.add_edge(a,c,3)
+    graph.add_edge(c,b,3)
+    graph.add_edge(d,b,4)
+    graph.add_edge(d,c,5)
+    actual = graph.Depth_first(a)
+    expected =['A', 'C', 'D', 'B']
+    assert actual == expected
+################################ testing Depth first on a graph where all vertices are not connected (there is an isolated vertex) starting
+################################ from an isolated vertex
+def test_graph_15():
+    graph = Graph()
+
+    a = graph.add_vertex("A")
+    b = graph.add_vertex("B")
+    c = graph.add_vertex("C")
+    d = graph.add_vertex("D")
+    e = graph.add_vertex("E")
+
+    graph.add_edge(a,b,2)
+    graph.add_edge(a,c,3)
+    graph.add_edge(c,b,3)
+    graph.add_edge(d,b,4)
+    graph.add_edge(d,c,5)
+    actual = graph.Depth_first(e)
+    expected =['E']
+    assert actual == expected
