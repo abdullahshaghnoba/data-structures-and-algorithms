@@ -27,4 +27,6 @@
 | code challange 33 | [Link](./cc33/README.md) |
 | code challange 35 | [Link](./cc35/README.md) |
 | code challange 36 | [Link](./cc35/README.md) |
+| code challange 37 | [Link](./cc35/README.md) |
+| code challange 38 | [Link](./cc35/README.md) |
 

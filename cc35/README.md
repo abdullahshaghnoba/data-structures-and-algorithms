@@ -48,6 +48,13 @@
 ### Returns: the weight from the first vertex to the last vertex if there is direct connection between each vertex and the one after it else returns null.
 
 ---
+
+## Dipth_first method:
+### takes a node in a graph and returns a list of the graph nodes traversed following the depth first concept
+### Arguments: Node.
+### Returns: List of nodes.
+
+---
 ## Whiteboard Process for cc35
 [Whiteboard Process](./pics/cc35.jpg)
 
@@ -56,6 +63,10 @@
 
 ## Whiteboard Process for cc37
 [Whiteboard Process](./pics/cc37.jpg)
+
+
+## Whiteboard Process for cc38
+[Whiteboard Process](./pics/cc38.jpg)
 
 ---
 
@@ -87,6 +98,10 @@
 ### O(n) Space performance --> the size of memory taken depends on the input size.
 
 ## business_trip method:
+### O(n*2) Time performance --> because we depend on the input size in the loop we use **nested for loop that iterates over the input**.
+### O(n) Space performance --> the size of memory taken depends on the input size.
+
+## Dipth_first method:
 ### O(n*2) Time performance --> because we depend on the input size in the loop we use **nested for loop that iterates over the input**.
 ### O(n) Space performance --> the size of memory taken depends on the input size.
 
@@ -180,6 +195,21 @@ class Graph:
                 else:
                     return 'null'
         return total_cost
+
+    def Depth_first(self, Node):
+        stack = Stack()
+        visited = {}
+        res = []
+        stack.push_stack(Node.value)
+        visited[Node.value] = True
+        while not stack.is_empty_stack():
+            Top = stack.pop_stack()
+            res.append(Top)
+            for x in self.adj_list[Top]:
+                if x.vertex.value not in visited: 
+                    visited[x.vertex.value] = True
+                    stack.push_stack(x.vertex.value)
+        return res
 
     def __str__(self):
         output = ''
